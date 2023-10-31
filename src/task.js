@@ -3,7 +3,7 @@ class Task {
 
     constructor(title, 
         description = "No description",
-        dueDate, priority, isComplete) {
+        dueDate, priority) {
             this.title = title;
             this.description = description;
             this.priority = priority;
