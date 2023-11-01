@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .content {
     display: grid;
     grid-template-columns: minmax(350px, 1fr) 3fr;
@@ -8,6 +14,32 @@
     display: flex;
     grid-column: span 2;
     padding: 7px;
+}
+
+.nav-items {
+    padding: 10px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 3px 0px 3px 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.list:hover {}
+
+.list>img {
+    width: 32px;
+    height: 32px;
+}
+
+.list>p {
+    font-size: 1.2rem;
 }
 
 .content>* {
