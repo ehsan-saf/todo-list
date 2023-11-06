@@ -11,7 +11,6 @@
 .content {
     display: grid;
     grid-template-columns: 350px 3fr;
-    grid-template-rows: 1fr 5fr;
 }
 
 .header {
@@ -26,7 +25,7 @@ button {
     cursor: pointer;
 }
 
-/* -------- Nav and Lists ---------- */
+/* -------- Nav and Folders ---------- */
 
 .nav-items {
     display: flex;
@@ -39,7 +38,7 @@ button {
     border-bottom: 2px solid var(--main-text-color);
 }
 
-.list {
+.folder {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -50,14 +49,14 @@ button {
     transition: all 0.1s;
 }
 
-.list:hover {}
+.folder:hover {}
 
-.list>img {
+.folder>img {
     width: 32px;
     height: 32px;
 }
 
-.list>p {
+.folder>p {
     font-size: 1.2rem;
 }
 
@@ -86,6 +85,44 @@ button {
     border-radius: 50%;
     padding: 0;
 }
+
+/* -------- New Folder Info --------- */
+.newFolderInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    /* display: none; */
+}
+
+#folderNameInput {
+    border-radius: 3px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.addCancelBtn {
+    display: flex;
+    gap: 20px;
+}
+
+.newFolderBtn {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+
+#createFolderBtn {
+    background-color: green;
+}
+
+#cancelFolderBtn {
+    background-color: rgb(187, 8, 8);
+}
+
 
 
 
