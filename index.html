@@ -19,11 +19,11 @@
             <div class="nav-items">
                 <div class="home">
                     <h2>Home</h2>
-                    <div class="list" id="all">
+                    <div class="folder" id="all">
                         <img src="./icons/all.png" alt="Today">
                         <p>All Tasks</p>
                     </div>
-                    <div class="list" id="today">
+                    <div class="folder" id="today">
                         <img src="./icons/today.png" alt="Today">
                         <p>Today</p>
                     </div>
@@ -31,20 +31,27 @@
                 <div class="folders">
                     <div class="folders-top">
                         <h2>Folders</h2>
-                        <button id="addFolderButton">
+                        <button id="addFolderBtn">
                             <img src="./icons/add.png" alt="">
                         </button>
                     </div>
-                    <div class="list" id="default-folder">
+                    <div class="folder" id="default-folder">
                         <img src="./icons/list.png" alt="Today">
                         <p>Default</p>
+                    </div>
+                </div>
+                <div class="newFolderInput">
+                    <input type="text" id="folderNameInput" placeholder="Enter Folder Name">
+                    <div class="addCancelBtn">
+                        <button class="newFolderBtn" id="createFolderBtn">Add</button>
+                        <button class="newFolderBtn" id="cancelFolderBtn">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
         <main class="main">
-
-        </main>
+    </div>
+    </main>
     </div>
 </body>
 
