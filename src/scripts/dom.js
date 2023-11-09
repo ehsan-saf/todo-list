@@ -1,5 +1,5 @@
 import { initialize as initFolders } from "./folder";
 
-export function initialize() {
+export default function initialize() {
     initFolders();
 }
