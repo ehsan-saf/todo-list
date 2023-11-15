@@ -134,11 +134,19 @@ button {
 
 /* ------ Main Section ------- */
 
+/* ------  Top Section  ------- */
+
 .main {
     display: grid;
-    grid-template-columns: minmax(400px, 650px);
+    grid-template-columns: minmax(450px, 850px);
     justify-content: center;
     padding: 20px;
+}
+
+.todo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .todo-top {
@@ -165,4 +173,23 @@ button {
 .add-todo-btn:hover {
     color: white;
     background-color: black;
+}
+
+/* --------- To Do List --------- */
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.todo>div:first-child {
+    display: flex;
+    gap: 10px;
+}
+
+.todo input[type="checkbox"] {
+    width: 30px;
 }
