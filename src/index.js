@@ -1,2 +1,4 @@
-import initialize from "./scripts/dom";
+import initialize from "./domScripts/dom";
 initialize();
+
+const folders = [];

@@ -27,6 +27,7 @@ function addFolder() {
     resetFolderInput();
 }
 
+
 function resetFolderInput() {
     newFolderName.value = "";
 }
