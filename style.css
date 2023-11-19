@@ -199,11 +199,16 @@ button {
 }
 
 .priority {
-    font-weight: bold;
+    font-size: 1.1rem;
     letter-spacing: 1px;
     border: 1px solid black;
     border-radius: 10px;
     padding: 7px;
+    cursor: pointer;
+}
+
+.priority:hover {
+    font-weight: bold;
 }
 
 .important {
@@ -211,11 +216,11 @@ button {
 }
 
 .medium {
-    color: orange;
+    color: rgb(226, 148, 2);
 }
 
 .low {
-    color: greenyellow;
+    color: rgb(122, 204, 0);
 }
 
 .checkbox {
