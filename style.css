@@ -177,6 +177,12 @@ button {
 
 /* --------- To Do List --------- */
 
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(10px + 0.5vh);
+}
+
 .todo {
     display: flex;
     justify-content: space-between;
@@ -202,6 +208,14 @@ button {
 
 .important {
     color: #EF476F;
+}
+
+.medium {
+    color: orange;
+}
+
+.low {
+    color: greenyellow;
 }
 
 .checkbox {
