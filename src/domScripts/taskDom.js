@@ -15,6 +15,7 @@ export function createTask(task) {
 
     const priority = document.createElement("div");
     priority.classList.add("priority");
+    priority.addEventListener("click", changePriority);
 
     const dueDate = document.createElement("p");
     dueDate.classList.add("todo-date");
@@ -26,8 +27,8 @@ export function createTask(task) {
     div2.appendChild(dueDate);
 
     todoTitle.textContent = task.title;
-    priority.classList.add(task.priority);
-    priority.textContent = task.priority;
+
+    setPriority(task, priority);
     dueDate.textContent = task.dueDate;
 
     todo.appendChild(div1);
@@ -37,10 +38,23 @@ export function createTask(task) {
 }
 
 
-function setPriority() {
-    
+function setPriority(task, priority) {
+    let pr = "";
+    switch(task.priority) {
+        case "1": pr = "important"; break;
+        case "2": pr = "medium"; break;
+        case "3": pr = "low"; break;
+    }
+    priority.classList.add(pr);
+    priority.textContent = pr;
+}
+
+function changePriority(pr) {
+    const targetTask = pr.target.parentElement.parentElement;
 }
 
 function getDate() {
 
 }
+
+// Code for Getting task info from the user 
