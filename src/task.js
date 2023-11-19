@@ -1,12 +1,11 @@
-class Task {
+export class Task {
 
     constructor(title, 
         description = "No description",
-        dueDate, priority,
+        dueDate = "", priority,
         folderName) {
             this.title = title;
             this.description = description;
-            this.priority = priority;
             this.dueDate = dueDate;
             this.priority = priority;
             this.isComplete = false;

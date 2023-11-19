@@ -1,9 +1,14 @@
 import { initialize as initFolders } from "./folderDom";
+import { createTask } from "./taskDom";
 
-export default function initialize() {
+export function initialize() {
     initFolders();
 }
 
-function openFolder(folderId) {
+export function addTask(task) {
+    createTask(task);
+}
 
+function openFolder(folderId) {
+    
 }
