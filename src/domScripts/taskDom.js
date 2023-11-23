@@ -1,5 +1,11 @@
 const todoList = document.querySelector(".todo-list");
 
+const priorities = {
+    "1": "important",
+    "2": "medium",
+    "3": "low",
+};
+
 export function createTask(task) {
 
     const todo = document.createElement("div");
@@ -39,12 +45,7 @@ export function createTask(task) {
 
 
 function setPriority(task, priority) {
-    let pr = "";
-    switch(task.priority) {
-        case "1": pr = "important"; break;
-        case "2": pr = "medium"; break;
-        case "3": pr = "low"; break;
-    }
+    let pr = priorities[task.priority];
     priority.classList.add(pr);
     priority.textContent = pr;
 }
