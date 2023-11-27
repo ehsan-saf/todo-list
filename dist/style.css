@@ -7,6 +7,7 @@
 
 :root {
     --main-line-color: black;
+    --medium-option-color: rgb(177, 119, 12);
 }
 
 .content {
@@ -24,6 +25,11 @@ button {
     border: none;
     background: none;
     cursor: pointer;
+}
+
+button>img {
+    width: 30px;
+    height: 30px;
 }
 
 /* -------- Nav and Folders ---------- */
@@ -76,6 +82,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding-bottom: 6px;
     border-bottom: 2px solid var(--main-line-color);
 }
@@ -83,12 +90,15 @@ button {
 #addFolderButton {
     width: 30px;
     height: 30px;
+
     border-radius: 50%;
     padding: 0;
+
 }
 
 
 /* -------- New Folder Info --------- */
+
 .newFolderInput {
     display: flex;
     flex-direction: column;
@@ -115,6 +125,7 @@ button {
     color: white;
     padding: 5px 10px;
     border-radius: 10px;
+
     font-weight: bold;
 }
 
@@ -140,6 +151,7 @@ button {
     display: grid;
     grid-template-columns: minmax(450px, 850px);
     justify-content: center;
+
     padding: 20px;
 }
 
@@ -153,6 +165,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     border-bottom: 1.5px solid var(--main-line-color);
     padding-bottom: 10px;
 }
@@ -162,9 +175,12 @@ button {
     gap: 6px;
     justify-content: center;
     align-items: center;
+
     border: 1px solid black;
     border-radius: 5px;
+
     padding: 8px 16px;
+
     font-size: 20px;
     transition: 0.3s;
 }
@@ -187,8 +203,10 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     border: 1px solid black;
     border-radius: 10px;
+
     padding: 10px;
 }
 
@@ -201,8 +219,10 @@ button {
 .priority {
     font-size: 1.1rem;
     letter-spacing: 1px;
+
     border: 1px solid black;
     border-radius: 10px;
+
     padding: 7px;
     cursor: pointer;
 }
@@ -227,6 +247,7 @@ button {
     padding: 12px;
     border: 1px solid black;
     border-radius: 50%;
+
     cursor: pointer;
     transition: 0.2s;
 }
@@ -234,3 +255,125 @@ button {
 .checkbox:hover {
     background-color: rgb(230, 76, 76);
 }
+
+/* New Task Modal */
+
+.new-task-modal {
+    margin: 0 auto;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+
+    border: none;
+    border-radius: 10px;
+
+}
+
+.new-task-modal::backdrop {
+    opacity: 0.9;
+}
+
+.modal-content {
+    display: grid;
+    justify-content: center;
+    background-color: aliceblue;
+
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+}
+
+form {
+    display: grid;
+}
+
+form>label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 200px;
+}
+
+label>input {
+    padding: 5px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.priority-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.priority-container>div {
+    display: flex;
+    gap: 10px;
+}
+
+.option-button {
+    display: inline-block;
+    background-color: #ccc;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#first-pr:checked+label,
+#first-pr+label:hover {
+    background-color: rgb(187, 10, 10);
+    color: white;
+}
+
+#second-pr:checked+label,
+#second-pr+label:hover {
+    background-color: var(--medium-option-color);
+    color: white;
+}
+
+#third-pr:checked+label,
+#third-pr+label:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* .second {
+    color: var(--medium-option-color);
+    border: 1px solid var(--medium-option-color);
+}
+
+.third {
+    color: green;
+    border: 1px solid green;
+}
+
+.first:hover {
+    color: white;
+    background-color: red;
+}
+
+.second:hover {
+    color: white;
+    background-color: var(--medium-option-color);
+}
+
+.third:hover {
+    color: white;
+    background-color: green;
+} */

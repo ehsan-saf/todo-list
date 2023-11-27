@@ -1,4 +1,5 @@
 const todoList = document.querySelector(".todo-list");
+const newTaskModal = document.querySelector(".new-task-modal");
 
 const priorities = {
     "1": "important",
@@ -59,3 +60,7 @@ function getDate() {
 }
 
 // Code for Getting task info from the user 
+
+function openModal() {
+    
+}
