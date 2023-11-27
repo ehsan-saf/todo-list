@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <script src="https://kit.fontawesome.com/b728b3ab6b.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -33,7 +32,6 @@
                     <div class="folders-top">
                         <h2>Folders</h2>
                         <button id="addFolderBtn">
-                            <i class="fa-solid fa-circle-plus fa-2xl"></i>
                         </button>
                     </div>
                     <div class="folder" id="default-folder">
@@ -54,7 +52,7 @@
             <div class="todo-section">
                 <div class="todo-top">
                     <h2 class="folder-name">Folder Name</h2>
-                    <button class="add-todo-btn"><i class="fa-solid fa-circle-plus fa-xl"></i>Add
+                    <button class="add-todo-btn"><img src="./icons/add.svg" alt=""> Add
                         Task</button>
                 </div>
                 <div class="todo-list">
@@ -69,6 +67,40 @@
                         </div>
                     </div>
                 </div>
+                <dialog class="new-task-modal">
+                    <div class="modal-content">
+                        <form>
+                            <label for="">Title:
+                                <input type="text" id="todoTitle" placeholder="To Do Name">
+                            </label>
+                            <label for="">Due Date:
+                                <input type="date" id="todoDate">
+                            </label>
+                            <div class="priority-container">
+                                <p>Priority: </p>
+                                <div>
+                                    <div>
+                                        <input type="radio" name="priority" value="1" id="first-pr">
+                                        <label class="option-button" for="first-pr">High
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="priority" value="2" id="second-pr">
+                                        <label class="option-button" for="second-pr">Medium
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="priority" value="3" id="third-pr">
+                                        <label class="option-button" for="third-pr">Low
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </dialog>
             </div>
         </main>
     </div>
