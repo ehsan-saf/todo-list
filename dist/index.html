@@ -32,6 +32,7 @@
                     <div class="folders-top">
                         <h2>Folders</h2>
                         <button id="addFolderBtn">
+                            <img src="./icons/add.svg" alt="">
                         </button>
                     </div>
                     <div class="folder" id="default-folder">
@@ -69,7 +70,7 @@
                 </div>
                 <dialog class="new-task-modal">
                     <div class="modal-content">
-                        <form>
+                        <div class="todo-input">
                             <label for="">Title:
                                 <input type="text" id="todoTitle" placeholder="To Do Name">
                             </label>
@@ -98,7 +99,16 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                            <div class="description-container">
+                                <label for="todo-text">Note :</label>
+                                <textarea name="" id="todo-text" cols="30" rows="10"
+                                    placeholder="Enter your note here"></textarea>
+                            </div>
+                            <div class="todo-btn">
+                                <button class="cancel-todo-btn">Cancel</button>
+                                <button class="save-todo-btn">Save</button>
+                            </div>
+                        </div>
                     </div>
                 </dialog>
             </div>
