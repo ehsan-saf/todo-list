@@ -279,13 +279,17 @@ button>img {
     background-color: aliceblue;
 
     width: 400px;
-    height: 450px;
+    height: 500px;
     padding: 10px;
+}
+
+.modal-content h2 {
+    font-size: 1.1rem;
 }
 
 .todo-input {
     display: grid;
-    gap: 15px;
+    gap: 20px;
 }
 
 .todo-input>label {
@@ -328,6 +332,7 @@ label>input {
     border-radius: 5px;
 
     font-size: 1rem;
+    font-weight: bold;
     letter-spacing: 1px;
     padding: 10px;
 
@@ -353,6 +358,12 @@ input[type="radio"] {
 #third-pr:checked+label,
 #third-pr+label:hover {
     background-color: #4CAF50;
+    color: white;
+}
+
+#fourth-pr:checked+label,
+#fourth-pr+label:hover {
+    background-color: rgb(189, 65, 194);
     color: white;
 }
 

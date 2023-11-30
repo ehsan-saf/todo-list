@@ -71,14 +71,16 @@
                 <dialog class="new-task-modal">
                     <div class="modal-content">
                         <div class="todo-input">
-                            <label for="">Title:
-                                <input type="text" id="todoTitle" placeholder="To Do Name">
+                            <label for="">
+                                <h2>Title:</h2>
+                                <input type="text" id="todoTitle" placeholder="To Do Name" required>
                             </label>
-                            <label for="">Due Date:
+                            <label for="">
+                                <h2>Due Date:</h2>
                                 <input type="date" id="todoDate">
                             </label>
                             <div class="priority-container">
-                                <p>Priority: </p>
+                                <h2>Priority: </h2>
                                 <div>
                                     <div>
                                         <input type="radio" name="priority" value="1" id="first-pr">
@@ -97,11 +99,20 @@
                                         <label class="option-button" for="third-pr">Low
                                         </label>
                                     </div>
+
+                                    <div>
+                                        <input type="radio" name="priority" value="4" id="fourth-pr" checked>
+                                        <label class="option-button" for="fourth-pr">None
+                                        </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="description-container">
-                                <label for="todo-text">Note :</label>
-                                <textarea name="" id="todo-text" cols="30" rows="10"
+                                <label for="todo-text">
+                                    <h2>Note :</h2>
+                                </label>
+                                <textarea name="" id="todo-text" maxlength="100" cols="30" rows="10"
                                     placeholder="Enter your note here"></textarea>
                             </div>
                             <div class="todo-btn">
