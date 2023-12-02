@@ -187,8 +187,7 @@ button>img {
 
 
 .add-todo-btn:hover {
-    color: white;
-    background-color: black;
+    background-color: rgb(172, 172, 172);
 }
 
 /* --------- To Do List --------- */
@@ -241,6 +240,10 @@ button>img {
 
 .low {
     color: rgb(122, 204, 0);
+}
+
+.none {
+    color: purple;
 }
 
 .checkbox {
