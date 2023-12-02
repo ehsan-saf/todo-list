@@ -3,7 +3,7 @@ export class Task {
     constructor(title, 
         description = "No description",
         dueDate = "", priority,
-        folderName) {
+        folderName = "default") {
             this.title = title;
             this.description = description;
             this.dueDate = dueDate;

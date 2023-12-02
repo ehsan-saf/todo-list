@@ -5,6 +5,7 @@ const priorities = {
     "1": "important",
     "2": "medium",
     "3": "low",
+    "4": "none",
 };
 
 export function createTask(task) {
@@ -57,10 +58,4 @@ function changePriority(pr) {
 
 function getDate() {
 
-}
-
-// Code for Getting task info from the user 
-
-function openModal() {
-    
 }

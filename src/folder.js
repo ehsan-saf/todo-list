@@ -5,7 +5,7 @@ function createFolderObj(name, foldersArray) {
 } 
 
 function validateName(name, array) {
-    if(!array.contains( fl => fl.name === "name")) {
+    if(!array.contains( fl => fl.name === name)) {
         return true;
     }
     else{
