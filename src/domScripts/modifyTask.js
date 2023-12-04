@@ -4,7 +4,11 @@ import { tasksArray } from "..";
 
 const saveButton = document.querySelector(".save-todo-btn");
 const cancelButton = document.querySelector(".cancel-todo-btn");
+
 const newTaskModal = document.querySelector(".new-task-modal");
+
+const inputs = document.querySelectorAll("input");
+const textarea = document.querySelector('textarea[name="todo-note"]');
 
 export function initialize() {
     saveButton.addEventListener("click", saveTask);
@@ -33,8 +37,18 @@ function saveTask() {
     tasksArray.push(newTask);
     addTasksToPage();
     newTaskModal.close();
+    resetInputs();
 }
 
 function cancelTask() {
     newTaskModal.close();
+    resetInputs();
+}
+
+function resetInputs() {
+    inputs.forEach(input => {
+        input.value = "";
+        textarea.value = "";
+        document.querySelector('input[id="fourth-pr"]').checked = true;
+    });
 }

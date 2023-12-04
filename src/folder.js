@@ -1,14 +1,15 @@
-function createFolderObj(name, foldersArray) {
-    if(validateName(name, foldersArray)) {
+function newFolder(name, tasks, orderIndex) {
+    return {
+        name: name,
+        tasks: tasks,
+        orderIndex: orderIndex,
 
-    }
+        addTask(task) {
+            this.tasks.push(task);
+        },
+
+        removeTask(task) {
+            this.tasks = this.tasks.filter(ts => ts.id !== task.id);
+        }
+    };
 } 
-
-function validateName(name, array) {
-    if(!array.contains( fl => fl.name === name)) {
-        return true;
-    }
-    else{
-        return false;
-    }
-}
