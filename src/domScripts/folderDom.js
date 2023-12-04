@@ -1,6 +1,7 @@
 const foldersList = document.querySelector(".folders");
 const newFolderPrompt = document.querySelector(".newFolderInput");
 const newFolderName = document.querySelector("#folderNameInput");
+const folders = document.querySelectorAll(".folder");
 
 export function initialize() {
 
@@ -18,6 +19,8 @@ export function initialize() {
         resetFolderInput();
         newFolderPrompt.classList.add("hide");
     });
+
+    folders.forEach(fl => { fl.addEventListener("click", selectFolder) });
 }
 
 
@@ -36,6 +39,7 @@ function createFolder(folderName) {
 
     const folder = document.createElement("div");
     folder.classList.add("folder");
+    folder.addEventListener("click", selectFolder);
 
     const icon = document.createElement("img");
     icon.src = "./icons/list.png";
@@ -46,4 +50,14 @@ function createFolder(folderName) {
     folder.appendChild(icon);
     folder.appendChild(name);
     foldersList.appendChild(folder);
+
+}
+
+function selectFolder(e) {
+    console.log("Folder clicked!");
+    const selectedFolder = document.querySelector(".selectedFolder");
+    selectedFolder.classList.remove("selectedFolder");
+    e.target.classList.add("selectedFolder");
+
+    // Load the Tasks present in the selected Folder
 }

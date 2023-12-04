@@ -49,14 +49,19 @@ button>img {
     display: flex;
     align-items: center;
     gap: 10px;
+
     padding: 3px 0px 3px 5px;
+
     border: 1px solid red;
     border-radius: 10px;
+
     cursor: pointer;
     transition: all 0.1s;
 }
 
-.folder:hover {}
+.selectedFolder {
+    background-color: rgb(79, 210, 243);
+}
 
 .folder>img {
     width: 32px;
