@@ -13,11 +13,6 @@ export function initialize() {
     createNewTaskBtn.addEventListener("click", openToDoModal);
 }
 
-export function addTasksToPage() {
-    todoList.innerHTML = "";
-    tasksArray.forEach(task =>  { createTask(task) });
-}
-
 
 function openFolder(folderId) {
     

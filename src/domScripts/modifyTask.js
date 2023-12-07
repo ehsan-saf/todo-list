@@ -1,6 +1,5 @@
 import { Task } from "../task";
-import { addTasksToPage } from "./dom";
-import { tasksArray } from "..";
+import { addToTaskArray } from "../folder";
 
 const saveButton = document.querySelector(".save-todo-btn");
 const cancelButton = document.querySelector(".cancel-todo-btn");
@@ -34,7 +33,8 @@ function getInputs() {
 function saveTask() {
     getInputs();
     const newTask = new Task(title, description, deuDate, priority);
-    tasksArray.push(newTask);
+    addToTaskArray(newTask);
+    // Add the task to the selected folder instance
     addTasksToPage();
     newTaskModal.close();
     resetInputs();

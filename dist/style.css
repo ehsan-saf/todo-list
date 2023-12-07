@@ -45,6 +45,11 @@ button>img {
     border-bottom: 2px solid var(--main-line-color);
 }
 
+.folder-list {
+    display: grid;
+    gap: 10px;
+}
+
 .folder {
     display: flex;
     align-items: center;
@@ -61,6 +66,8 @@ button>img {
 
 .selectedFolder {
     background-color: rgb(79, 210, 243);
+
+    font-weight: bold;
 }
 
 .folder>img {

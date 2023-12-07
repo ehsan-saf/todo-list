@@ -1,5 +1,7 @@
+import { getSelectedFolderID } from "./folderDom";
+import { getFolderInstance } from "../folder";
+
 const todoList = document.querySelector(".todo-list");
-const newTaskModal = document.querySelector(".new-task-modal");
 
 const priorities = {
     "1": "important",
@@ -8,7 +10,15 @@ const priorities = {
     "4": "none",
 };
 
-export function createTask(task) {
+export function loadTasks() {
+    const tasksArray = getFolderInstance(getSelectedFolderID());
+    console.log();
+    tasksArray.tasks.forEach(task => {
+        createTask(task);
+    });
+}
+
+function createTask(task) {
 
     const todo = document.createElement("div");
     todo.classList.add("todo");

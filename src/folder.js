@@ -1,8 +1,15 @@
-function newFolder(name, tasks, orderIndex) {
+import { getSelectedFolderID } from "./domScripts/folderDom";
+
+export let foldersArray = [];
+
+
+addToFolderArray("Default");
+
+export function newFolder(name, tasks = [], id = 0) {
     return {
         name: name,
         tasks: tasks,
-        orderIndex: orderIndex,
+        id: id,
 
         addTask(task) {
             this.tasks.push(task);
@@ -13,3 +20,24 @@ function newFolder(name, tasks, orderIndex) {
         }
     };
 } 
+
+export function addToFolderArray(folderName) {
+    const folder = newFolder(folderName);
+    folder.id = foldersArray.length !== 0 ? foldersArray.length : 0;
+    foldersArray.push(folder);
+}
+
+export function getFolderInstance(folderId) {
+    return foldersArray.filter(fl => fl.id === folderId)[0];
+}
+
+export function addToTaskArray(task) {
+    let folderId = getSelectedFolderID();
+    foldersArray.forEach(fl => {
+        if(fl.id === folderId) {
+            fl.addTask(task);
+        }
+    });
+}
+
+

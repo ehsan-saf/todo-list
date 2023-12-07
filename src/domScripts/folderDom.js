@@ -1,7 +1,12 @@
-const foldersList = document.querySelector(".folders");
+import { foldersArray } from "../folder";
+import { addToFolderArray } from "../folder";
+
+
+const foldersList = document.querySelector(".folder-list");
 const newFolderPrompt = document.querySelector(".newFolderInput");
 const newFolderName = document.querySelector("#folderNameInput");
-const folders = document.querySelectorAll(".folder");
+const folders = document.querySelectorAll("folder");
+
 
 export function initialize() {
 
@@ -25,7 +30,8 @@ export function initialize() {
 
 
 function addFolder() {
-    createFolder(newFolderName.value);
+    addToFolderArray(newFolderName.value);
+    loadFolders();
     newFolderPrompt.classList.add("hide");
     resetFolderInput();
 }
@@ -35,22 +41,26 @@ function resetFolderInput() {
     newFolderName.value = "";
 }
 
-function createFolder(folderName) {
+function loadFolders() {
+    foldersList.innerHTML = "";
+    foldersArray.forEach(fl => {
 
-    const folder = document.createElement("div");
-    folder.classList.add("folder");
-    folder.addEventListener("click", selectFolder);
+        const folder = document.createElement("div");
+        folder.classList.add("folder");
+        folder.addEventListener("click", selectFolder);
 
-    const icon = document.createElement("img");
-    icon.src = "./icons/list.png";
+        const icon = document.createElement("img");
+        icon.src = "./icons/list.png";
 
-    const name = document.createElement("p");
-    name.textContent = folderName;
+        const name = document.createElement("p");
+        name.textContent = fl.name;
 
-    folder.appendChild(icon);
-    folder.appendChild(name);
-    foldersList.appendChild(folder);
-
+        folder.appendChild(icon);
+        folder.appendChild(name);
+        folder.id = fl.id;
+        foldersList.appendChild(folder); 
+    });
+    
 }
 
 function selectFolder(e) {
@@ -60,4 +70,8 @@ function selectFolder(e) {
     e.target.classList.add("selectedFolder");
 
     // Load the Tasks present in the selected Folder
+}
+
+export function getSelectedFolderID() {
+    return Number(document.querySelector(".selectedFolder").id);
 }
