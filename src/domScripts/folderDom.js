@@ -36,6 +36,7 @@ function addFolder() {
     loadFolders();
     newFolderPrompt.classList.add("hide");
     resetFolderInput();
+    selectAddedFolder();
 }
 
 
@@ -45,7 +46,7 @@ function resetFolderInput() {
 
 function loadFolders() {
     foldersList.innerHTML = "";
-    foldersArray.forEach(fl => {
+    foldersArray.forEach((fl, index) => {
 
         const folder = document.createElement("div");
         folder.classList.add("folder");
@@ -60,6 +61,7 @@ function loadFolders() {
         folder.appendChild(icon);
         folder.appendChild(name);
         folder.id = fl.id;
+
         foldersList.appendChild(folder); 
     });
     
@@ -83,4 +85,10 @@ export function getSelectedFolderID() {
 
 function setFolderName() {
     folderName.textContent = getFolderInstance(getSelectedFolderID()).name;
+}
+
+function selectAddedFolder() {
+    document.querySelector(".folder-list  .folder:last-child").classList.add("selectedFolder");
+    setFolderName();
+    loadTasks();
 }
