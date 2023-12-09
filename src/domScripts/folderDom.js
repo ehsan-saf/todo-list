@@ -1,11 +1,13 @@
-import { foldersArray } from "../folder";
+import { foldersArray, getFolderInstance } from "../folder";
 import { addToFolderArray } from "../folder";
+import { loadTasks } from "./taskDom";
 
 
 const foldersList = document.querySelector(".folder-list");
 const newFolderPrompt = document.querySelector(".newFolderInput");
 const newFolderName = document.querySelector("#folderNameInput");
 const folders = document.querySelectorAll("folder");
+const folderName = document.querySelector(".folder-name");
 
 
 export function initialize() {
@@ -66,12 +68,19 @@ function loadFolders() {
 function selectFolder(e) {
     console.log("Folder clicked!");
     const selectedFolder = document.querySelector(".selectedFolder");
-    selectedFolder.classList.remove("selectedFolder");
+    if(selectedFolder) {
+        selectedFolder.classList.remove("selectedFolder");
+    }
     e.target.classList.add("selectedFolder");
-
+    loadTasks();
+    setFolderName();
     // Load the Tasks present in the selected Folder
 }
 
 export function getSelectedFolderID() {
     return Number(document.querySelector(".selectedFolder").id);
+}
+
+function setFolderName() {
+    folderName.textContent = getFolderInstance(getSelectedFolderID()).name;
 }

@@ -11,8 +11,8 @@ const priorities = {
 };
 
 export function loadTasks() {
+    todoList.innerHTML = "";
     const tasksArray = getFolderInstance(getSelectedFolderID());
-    console.log();
     tasksArray.tasks.forEach(task => {
         createTask(task);
     });

@@ -1,12 +1,13 @@
 import { Task } from "../task";
 import { addToTaskArray } from "../folder";
+import { loadTasks } from "./taskDom";
 
 const saveButton = document.querySelector(".save-todo-btn");
 const cancelButton = document.querySelector(".cancel-todo-btn");
 
 const newTaskModal = document.querySelector(".new-task-modal");
 
-const inputs = document.querySelectorAll("input");
+const inputs = document.querySelectorAll('input:not([type="radio"])');
 const textarea = document.querySelector('textarea[name="todo-note"]');
 
 export function initialize() {
@@ -33,9 +34,9 @@ function getInputs() {
 function saveTask() {
     getInputs();
     const newTask = new Task(title, description, deuDate, priority);
-    addToTaskArray(newTask);
     // Add the task to the selected folder instance
-    addTasksToPage();
+    addToTaskArray(newTask);
+    loadTasks();
     newTaskModal.close();
     resetInputs();
 }
