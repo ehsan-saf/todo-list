@@ -3,8 +3,6 @@ import { getSelectedFolderID } from "./domScripts/folderDom";
 export let foldersArray = [];
 
 
-addToFolderArray("Default");
-
 export function newFolder(name, tasks = [], id = 0) {
     return {
         name: name,
@@ -28,13 +26,13 @@ export function addToFolderArray(folderName) {
 }
 
 export function getFolderInstance(folderId) {
-    return foldersArray.filter(fl => fl.id === folderId)[0];
+    return foldersArray.filter(fl => fl.id == folderId)[0];
 }
 
 export function addToTaskArray(task) {
-    let folderId = getSelectedFolderID();
+    let folderId = Number(getSelectedFolderID());
     foldersArray.forEach(fl => {
-        if(fl.id === folderId) {
+        if(fl.id == folderId) {
             fl.addTask(task);
         }
     });

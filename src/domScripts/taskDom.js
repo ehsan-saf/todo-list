@@ -1,5 +1,5 @@
 import { getSelectedFolderID } from "./folderDom";
-import { getFolderInstance } from "../folder";
+import { foldersArray, getFolderInstance } from "../folder";
 
 const todoList = document.querySelector(".todo-list");
 
@@ -12,9 +12,18 @@ const priorities = {
 
 export function loadTasks() {
     todoList.innerHTML = "";
-    const tasksArray = getFolderInstance(getSelectedFolderID());
-    tasksArray.tasks.forEach(task => {
+    const folder = getFolderInstance(getSelectedFolderID());
+    folder.tasks.forEach(task => {
         createTask(task);
+    });
+}
+
+export function loadAllTasks() {
+    todoList.innerHTML = "";
+    foldersArray.forEach(folder => {
+        folder.tasks.forEach(task => {
+            createTask(task);
+        });
     });
 }
 

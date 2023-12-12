@@ -12,8 +12,3 @@ export function initialize() {
     initNewTask();
     createNewTaskBtn.addEventListener("click", openToDoModal);
 }
-
-
-function openFolder(folderId) {
-    
-}

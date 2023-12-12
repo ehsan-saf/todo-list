@@ -6,7 +6,7 @@ import { loadTasks } from "./domScripts/taskDom";
 initialize();
 
 let task1 = new Task("Ab exercise", "do 30 jumping jacks", 
-"1402 / 8 / 27", "3", "workouts", 0);
+"1402 / 8 / 27", "3", 0);
 
 addToTaskArray(task1);
 loadTasks();

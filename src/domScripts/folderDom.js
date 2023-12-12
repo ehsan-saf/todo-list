@@ -1,12 +1,12 @@
 import { foldersArray, getFolderInstance } from "../folder";
 import { addToFolderArray } from "../folder";
-import { loadTasks } from "./taskDom";
+import { loadAllTasks, loadTasks } from "./taskDom";
 
 
 const foldersList = document.querySelector(".folder-list");
 const newFolderPrompt = document.querySelector(".newFolderInput");
 const newFolderName = document.querySelector("#folderNameInput");
-const folders = document.querySelectorAll("folder");
+const folders = document.querySelectorAll(".folder");
 const folderName = document.querySelector(".folder-name");
 
 
@@ -27,7 +27,8 @@ export function initialize() {
         newFolderPrompt.classList.add("hide");
     });
 
-    folders.forEach(fl => { fl.addEventListener("click", selectFolder) });
+    folders.forEach(fl => { fl.addEventListener("click", selectFolder); });
+    addToFolderArray("Default");
 }
 
 
@@ -46,7 +47,7 @@ function resetFolderInput() {
 
 function loadFolders() {
     foldersList.innerHTML = "";
-    foldersArray.forEach((fl, index) => {
+    foldersArray.forEach(fl => {
 
         const folder = document.createElement("div");
         folder.classList.add("folder");
@@ -74,13 +75,24 @@ function selectFolder(e) {
         selectedFolder.classList.remove("selectedFolder");
     }
     e.target.classList.add("selectedFolder");
-    loadTasks();
-    setFolderName();
-    // Load the Tasks present in the selected Folder
+    const folderId = getSelectedFolderID();
+    if(folderId === "all") { 
+        loadAllTasks();
+        folderName.textContent = "All Tasks";
+    }
+    else if(folderId === "today") {
+        folderName.textContent = "Today Tasks";
+    }
+    else {
+        loadTasks();
+        setFolderName(folderId);
+    }
+    
+    
 }
 
 export function getSelectedFolderID() {
-    return Number(document.querySelector(".selectedFolder").id);
+    return document.querySelector(".selectedFolder").id;
 }
 
 function setFolderName() {
