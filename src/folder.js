@@ -33,6 +33,7 @@ export function addToTaskArray(task) {
     let folderId = Number(getSelectedFolderID());
     foldersArray.forEach(fl => {
         if(fl.id == folderId) {
+            task.id = fl.tasks.length;
             fl.addTask(task);
         }
     });

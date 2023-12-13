@@ -47,11 +47,27 @@ function createTask(task) {
     const dueDate = document.createElement("p");
     dueDate.classList.add("todo-date");
 
+    const removeButton = document.createElement("button");
+    const removeIcon = document.createElement("img");
+    removeIcon.src = "./icons/remove.png";
+    removeButton.appendChild(removeIcon);
+
+    removeButton.classList.add("delete-todo")
+    removeButton.addEventListener("click", removeTask);
+
+    removeIcon.addEventListener("mouseover", () => {
+        removeIcon.src = "./icons/remove.gif";
+    });
+    removeIcon.addEventListener("mouseleave", () => {
+        removeIcon.src = "./icons/remove.png";
+    });
+
     div1.appendChild(checkbox);
     div1.appendChild(todoTitle);
 
     div2.appendChild(priority);
     div2.appendChild(dueDate);
+    div2.appendChild(removeButton);
 
     todoTitle.textContent = task.title;
 
@@ -60,6 +76,8 @@ function createTask(task) {
 
     todo.appendChild(div1);
     todo.appendChild(div2);
+
+    todo.id = task.id;
 
     todoList.appendChild(todo);
 }
@@ -75,6 +93,6 @@ function changePriority(pr) {
     const targetTask = pr.target.parentElement.parentElement;
 }
 
-function getDate() {
+function removeTask() {
 
 }
