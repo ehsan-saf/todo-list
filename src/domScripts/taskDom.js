@@ -1,5 +1,5 @@
 import { getSelectedFolderID } from "./folderDom";
-import { foldersArray, getFolderInstance } from "../folder";
+import { foldersArray, getFolderInstance, removeFromTasks } from "../folder";
 
 const todoList = document.querySelector(".todo-list");
 
@@ -53,7 +53,7 @@ function createTask(task) {
     removeButton.appendChild(removeIcon);
 
     removeButton.classList.add("delete-todo")
-    removeButton.addEventListener("click", removeTask);
+    removeButton.addEventListener("click", removeFromTasks);
 
     removeIcon.addEventListener("mouseover", () => {
         removeIcon.src = "./icons/remove.gif";
@@ -78,6 +78,7 @@ function createTask(task) {
     todo.appendChild(div2);
 
     todo.id = task.id;
+    todo.dataset.folderId = task.folderId;
 
     todoList.appendChild(todo);
 }
@@ -91,8 +92,4 @@ function setPriority(task, priority) {
 
 function changePriority(pr) {
     const targetTask = pr.target.parentElement.parentElement;
-}
-
-function removeTask() {
-
 }
