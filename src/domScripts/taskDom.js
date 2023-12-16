@@ -1,5 +1,6 @@
 import { getSelectedFolderID } from "./folderDom";
 import { foldersArray, getFolderInstance, getTask, removeFromTasks } from "../folder";
+import { format, parseISO } from "date-fns";
 
 const todoList = document.querySelector(".todo-list");
 
@@ -100,7 +101,7 @@ function createTask(task) {
     todoTitle.textContent = task.title;
 
     setPriority(task, priority);
-    dueDate.textContent = task.dueDate;
+    dueDate.textContent = formatDate(task.dueDate);
 
     todo.appendChild(div1);
     todo.appendChild(div2);
@@ -120,6 +121,13 @@ function setPriority(task, priority) {
 
 function changePriority() {
 
+}
+
+function formatDate(date) {
+    if(date.trim().length === 0) {
+        return format(new Date(), "yyyy / MM / dd");
+    }
+    return format(parseISO(date), "yyyy / MM / dd");
 }
 
 export function changeChecked(event) {
