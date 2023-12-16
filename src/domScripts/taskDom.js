@@ -1,5 +1,5 @@
 import { getSelectedFolderID } from "./folderDom";
-import { foldersArray, getFolderInstance, removeFromTasks } from "../folder";
+import { foldersArray, getFolderInstance, getTask, removeFromTasks } from "../folder";
 
 const todoList = document.querySelector(".todo-list");
 
@@ -12,14 +12,21 @@ const priorities = {
 
 export function loadTasks() {
     todoList.innerHTML = "";
-    const folder = getFolderInstance(getSelectedFolderID());
-    folder.tasks.forEach(task => {
+    const selectFolder = getSelectedFolderID();
+    if(selectFolder === "all") { 
+        loadAllTasks();
+    }
+    else {
+        
+        const folder = getFolderInstance(getSelectedFolderID());
+        folder.tasks.forEach(task => {
         createTask(task);
-    });
+        });
+    }
+    
 }
 
 export function loadAllTasks() {
-    todoList.innerHTML = "";
     foldersArray.forEach(folder => {
         folder.tasks.forEach(task => {
             createTask(task);
@@ -35,8 +42,29 @@ function createTask(task) {
     const div1 = document.createElement("div");
     const div2 = document.createElement("div");
 
-    const checkbox = document.createElement("div");
+    const checkbox = document.createElement("button");
     checkbox.classList.add("checkbox");
+
+    if(task.isComplete) {
+        checkbox.style.backgroundImage = "url(./icons/checkbox.png)";
+    }
+
+    checkbox.addEventListener("mouseover", (e) => {
+        const task = getEventTask(e);
+        if(!task.isComplete) {
+            e.target.style.backgroundImage = "url(./icons/checkbox.gif)";
+        }
+    });
+
+    checkbox.addEventListener("mouseleave", (e) => {
+        const task = getEventTask(e);
+        if(!task.isComplete) {
+            e.target.style.backgroundImage = "";
+        }
+    });
+
+    checkbox.addEventListener("click", changeChecked);
+
     const todoTitle = document.createElement("h2");
     todoTitle.classList.add("todo-title");
 
@@ -90,6 +118,18 @@ function setPriority(task, priority) {
     priority.textContent = pr;
 }
 
-function changePriority(pr) {
-    const targetTask = pr.target.parentElement.parentElement;
+function changePriority() {
+
+}
+
+export function changeChecked(event) {
+    const task = getEventTask(event);
+    task.toggleComplete();
+    loadTasks();
+}
+
+export function getEventTask(event) {
+    const ts = event.target.closest(".todo");
+    const task = getTask(ts.id, ts.dataset.folderId);
+    return task;
 }

@@ -76,16 +76,15 @@ function selectFolder(e) {
     }
     e.target.classList.add("selectedFolder");
     const folderId = getSelectedFolderID();
+    loadTasks();
     if(folderId === "all") { 
-        loadAllTasks();
         folderName.textContent = "All Tasks";
     }
     else if(folderId === "today") {
         folderName.textContent = "Today Tasks";
     }
     else {
-        loadTasks();
-        setFolderName(folderId);
+        setFolderName();
     }
     
     

@@ -262,18 +262,18 @@ button>img {
 }
 
 .checkbox {
-    padding: 12px;
     border: 1px solid black;
     border-radius: 50%;
+
+    width: 45px;
+    height: 45px;
+
+    background-position: center;
+    background-repeat: no-repeat;
 
     cursor: pointer;
     transition: 0.2s;
 }
-
-.checkbox:hover {
-    background-color: rgb(230, 76, 76);
-}
-
 
 /* New Task Modal */
 

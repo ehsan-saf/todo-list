@@ -15,6 +15,8 @@ export function newFolder(name, tasks = [], id = 0) {
         },
 
         removeTask(taskId) {
+            console.log("Deleting task .....");
+            console.log(this.tasks.filter(ts => ts.id !== taskId));
             this.tasks = this.tasks.filter(ts => ts.id !== taskId);
             this.tasks.forEach((ts, index) =>  {
                 ts.id = index;
@@ -45,22 +47,20 @@ export function addToTaskArray(task) {
 }
 
 export function removeFromTasks(e) {
-    console.log(e.target);
-    const task = e.target.parentElement.parentElement.parentElement;
-    const taskId = Number(task.id);
-    const folderId = Number(task.dataset.folderId);
+    const todo = e.target.closest(".todo");
+    const taskId = Number(todo.id);
+    const folderId = Number(todo.dataset.folderId);
     foldersArray.forEach(fl => {
         if(fl.id == folderId) {
             fl.removeTask(taskId);
         }
     });
-    const folder = getSelectedFolderID();
-    if(folder === "all") { 
-        loadAllTasks();
-    }
-    else {
-        loadTasks();
-    }
+    loadTasks();
+}
+
+export function getTask(taskId, folderId) {
+    const folder = getFolderInstance(folderId);
+    return folder.tasks.find(ts => ts.id == taskId);
 }
 
 
