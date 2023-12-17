@@ -1,6 +1,6 @@
 import { getSelectedFolderID } from "./folderDom";
 import { foldersArray, getFolderInstance, getTask, removeFromTasks } from "../folder";
-import { format, parseISO } from "date-fns";
+import { format, isToday, parseISO } from "date-fns";
 
 const todoList = document.querySelector(".todo-list");
 
@@ -17,8 +17,10 @@ export function loadTasks() {
     if(selectFolder === "all") { 
         loadAllTasks();
     }
+    else if (selectFolder === "today") {
+        loadToday();
+    }
     else {
-        
         const folder = getFolderInstance(getSelectedFolderID());
         folder.tasks.forEach(task => {
         createTask(task);
@@ -30,7 +32,18 @@ export function loadTasks() {
 export function loadAllTasks() {
     foldersArray.forEach(folder => {
         folder.tasks.forEach(task => {
+            if(parseISO(task.dueDate))
             createTask(task);
+        });
+    });
+}
+
+function loadToday() {
+    foldersArray.forEach(folder => {
+        folder.tasks.forEach(task => {
+            if(isDateToday(task.dueDate)) {
+                createTask(task);
+            }
         });
     });
 }
@@ -128,6 +141,13 @@ function formatDate(date) {
         return format(new Date(), "yyyy / MM / dd");
     }
     return format(parseISO(date), "yyyy / MM / dd");
+}
+
+function isDateToday(date) {
+    if(date.trim().length === 0 || isToday(parseISO(date))) {
+         return true;
+    }
+    return false;
 }
 
 export function changeChecked(event) {
