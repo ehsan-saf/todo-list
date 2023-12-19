@@ -32,7 +32,7 @@ let description = "";
 
 function getInputs() {
     title = titleInput.value;
-    deuDate = dateInput.value;
+    deuDate = formatDate(dateInput.value);
     priority =  Number(priorityInput.value);
     description = descriptionInput.value;
 }
@@ -57,7 +57,7 @@ export function showInfo(event) {
 }
 
 function selectPriority(pr) {
-    const id = "";
+    let id = "";
     switch (pr) {
         case 1:
             id = "first-pr";
@@ -79,6 +79,7 @@ function selectPriority(pr) {
     // document.getElementById(id).checked = true;
 }
 
+
 function cancelTask() {
     newTaskModal.close();
     resetInputs();
@@ -90,4 +91,11 @@ function resetInputs() {
         textarea.value = "";
         document.querySelector('input[id="fourth-pr"]').checked = true;
     });
+}
+
+function formatDate(date) {
+    if(date.trim().length === 0) {
+        return new Date().toLocaleDateString();
+    }
+    return date;
 }

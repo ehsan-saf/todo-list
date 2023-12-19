@@ -147,14 +147,12 @@ function setPriority(task, priority) {
 }
 
 function formatDate(date) {
-    if(date.trim().length === 0) {
-        return format(new Date(), "yyyy / MM / dd");
-    }
+    
     return format(parseISO(date), "yyyy / MM / dd");
 }
 
 function isDateToday(date) {
-    if(date.trim().length === 0 || isToday(parseISO(date))) {
+    if(isToday(parseISO(date))) {
          return true;
     }
     return false;
