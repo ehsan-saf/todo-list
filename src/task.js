@@ -1,3 +1,5 @@
+import { getEventTask, loadTasks } from "./domScripts/taskDom";
+
 export class Task {
 
     constructor(title, 
@@ -16,5 +18,14 @@ export class Task {
         this.isComplete = !this.isComplete;
     }  
 
+}
+
+export function changePriority(event) {
+    const task = getEventTask(event);
+    task.priority++;
+    if(task.priority === 4) {
+        task.priority = 1;
+    }
+    loadTasks();
 }
 

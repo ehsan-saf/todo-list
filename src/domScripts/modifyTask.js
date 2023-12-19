@@ -1,6 +1,6 @@
 import { Task } from "../task";
 import { addToTaskArray } from "../folder";
-import { loadTasks } from "./taskDom";
+import { getEventTask, loadTasks } from "./taskDom";
 
 const saveButton = document.querySelector(".save-todo-btn");
 const cancelButton = document.querySelector(".cancel-todo-btn");
@@ -19,16 +19,22 @@ export function openToDoModal() {
     newTaskModal.showModal();
 }
 
+const titleInput = document.getElementById("todoTitle");
+const dateInput = document.getElementById("todoDate");
+const priorityInput = document.querySelector('input[name="priority"]:checked');
+const descriptionInput = document.querySelector('textarea[name="todo-note"]');
+
 let title = "";
 let deuDate = "";
 let priority =  "";
 let description = "";
 
+
 function getInputs() {
-    title = document.getElementById("todoTitle").value;
-    deuDate = document.getElementById("todoDate").value;
-    priority =  document.querySelector('input[name="priority"]:checked').value;
-    description = document.querySelector('textarea[name="todo-note"]').value;
+    title = titleInput.value;
+    deuDate = dateInput.value;
+    priority =  Number(priorityInput.value);
+    description = descriptionInput.value;
 }
 
 function saveTask() {
@@ -39,6 +45,38 @@ function saveTask() {
     loadTasks();
     newTaskModal.close();
     resetInputs();
+}
+
+export function showInfo(event) {
+    const task = getEventTask(event);
+    newTaskModal.showModal();
+    titleInput.value = task.title;
+    dateInput.value  = task.dueDate;
+    selectPriority(task.priority);
+    descriptionInput.value = task.description;
+}
+
+function selectPriority(pr) {
+    const id = "";
+    switch (pr) {
+        case 1:
+            id = "first-pr";
+            break;
+    
+        case 2:
+            id = "second-pr";
+            break;
+        
+        case 3:
+            id = "third-pr";
+            break;
+        
+        case 4:
+            id = "fourth-pr";
+            break;
+    }
+    console.log(document.getElementById(id));
+    // document.getElementById(id).checked = true;
 }
 
 function cancelTask() {

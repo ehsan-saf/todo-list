@@ -1,15 +1,20 @@
 import { getSelectedFolderID } from "./folderDom";
 import { foldersArray, getFolderInstance, getTask, removeFromTasks } from "../folder";
+import { changePriority } from "../task"
+import { showInfo } from "./modifyTask";
 import { format, isToday, parseISO } from "date-fns";
+
+
+const priorities = {
+    1: "important",
+    2: "medium",
+    3: "low",
+    4: "none",
+};
+
 
 const todoList = document.querySelector(".todo-list");
 
-const priorities = {
-    "1": "important",
-    "2": "medium",
-    "3": "low",
-    "4": "none",
-};
 
 export function loadTasks() {
     todoList.innerHTML = "";
@@ -89,12 +94,20 @@ function createTask(task) {
     const dueDate = document.createElement("p");
     dueDate.classList.add("todo-date");
 
+    const infoButton = document.createElement("button");
+    const infoIcon = document.createElement("img");
+    infoIcon.src = "./icons/info.png";
+    infoButton.appendChild(infoIcon);
+
+    infoButton.id = "info";
+    infoButton.addEventListener("click", showInfo);
+
     const removeButton = document.createElement("button");
     const removeIcon = document.createElement("img");
     removeIcon.src = "./icons/remove.png";
     removeButton.appendChild(removeIcon);
 
-    removeButton.classList.add("delete-todo")
+    removeButton.id = "remove";
     removeButton.addEventListener("click", removeFromTasks);
 
     removeIcon.addEventListener("mouseover", () => {
@@ -109,6 +122,7 @@ function createTask(task) {
 
     div2.appendChild(priority);
     div2.appendChild(dueDate);
+    div2.appendChild(infoButton);
     div2.appendChild(removeButton);
 
     todoTitle.textContent = task.title;
@@ -130,10 +144,6 @@ function setPriority(task, priority) {
     let pr = priorities[task.priority];
     priority.classList.add(pr);
     priority.textContent = pr;
-}
-
-function changePriority() {
-
 }
 
 function formatDate(date) {
