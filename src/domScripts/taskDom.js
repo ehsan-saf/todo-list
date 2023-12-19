@@ -140,14 +140,14 @@ function createTask(task) {
 }
 
 
-function setPriority(task, priority) {
+function setPriority(task, priorityOption) {
     let pr = priorities[task.priority];
-    priority.classList.add(pr);
-    priority.textContent = pr;
+    priorityOption.classList.add(pr);
+    priorityOption.textContent = pr;
 }
 
 function formatDate(date) {
-    
+
     return format(parseISO(date), "yyyy / MM / dd");
 }
 

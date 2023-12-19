@@ -1,6 +1,7 @@
 import { Task } from "../task";
 import { addToTaskArray } from "../folder";
 import { getEventTask, loadTasks } from "./taskDom";
+import { format } from "date-fns";
 
 const saveButton = document.querySelector(".save-todo-btn");
 const cancelButton = document.querySelector(".cancel-todo-btn");
@@ -21,19 +22,18 @@ export function openToDoModal() {
 
 const titleInput = document.getElementById("todoTitle");
 const dateInput = document.getElementById("todoDate");
-const priorityInput = document.querySelector('input[name="priority"]:checked');
 const descriptionInput = document.querySelector('textarea[name="todo-note"]');
 
 let title = "";
 let deuDate = "";
-let priority =  "";
+let priority = 4;
 let description = "";
 
 
 function getInputs() {
     title = titleInput.value;
     deuDate = formatDate(dateInput.value);
-    priority =  Number(priorityInput.value);
+    priority =  Number(document.querySelector('input[name="priority"]:checked').value);
     description = descriptionInput.value;
 }
 
@@ -57,6 +57,7 @@ export function showInfo(event) {
 }
 
 function selectPriority(pr) {
+    console.log(pr);
     let id = "";
     switch (pr) {
         case 1:
@@ -75,8 +76,8 @@ function selectPriority(pr) {
             id = "fourth-pr";
             break;
     }
-    console.log(document.getElementById(id));
-    // document.getElementById(id).checked = true;
+    
+    document.getElementById(id).checked = true;
 }
 
 
@@ -95,7 +96,7 @@ function resetInputs() {
 
 function formatDate(date) {
     if(date.trim().length === 0) {
-        return new Date().toLocaleDateString();
+        return format(new Date(), 'yyyy-MM-dd');
     }
     return date;
 }

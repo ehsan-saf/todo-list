@@ -15,8 +15,6 @@ export function newFolder(name, tasks = [], id = 0) {
         },
 
         removeTask(taskId) {
-            console.log("Deleting task .....");
-            console.log(this.tasks.filter(ts => ts.id !== taskId));
             this.tasks = this.tasks.filter(ts => ts.id !== taskId);
             this.tasks.forEach((ts, index) =>  {
                 ts.id = index;
