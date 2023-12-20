@@ -34,7 +34,13 @@ export function getFolderInstance(folderId) {
 }
 
 export function addToTaskArray(task) {
-    let folderId = Number(getSelectedFolderID());
+    let folderId = getSelectedFolderID();
+    if(folderId === "all" || folderId === "today"){
+        folderId = 0;
+    }
+    else {
+        folderId = Number(folderId);
+    }
     foldersArray.forEach(fl => {
         if(fl.id == folderId) {
             task.id = fl.tasks.length;
