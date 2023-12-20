@@ -23,7 +23,7 @@ export class Task {
 export function changePriority(event) {
     const task = getEventTask(event);
     task.priority++;
-    if(task.priority === 4) {
+    if(task.priority === 5) {
         task.priority = 1;
     }
     loadTasks();

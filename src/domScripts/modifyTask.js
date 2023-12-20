@@ -11,12 +11,16 @@ const newTaskModal = document.querySelector(".new-task-modal");
 const inputs = document.querySelectorAll('input:not([type="radio"])');
 const textarea = document.querySelector('textarea[name="todo-note"]');
 
+let saveMode = 1;
+let targetTask;
+
 export function initialize() {
     saveButton.addEventListener("click", saveTask);
     cancelButton.addEventListener("click", cancelTask);
 }
 
 export function openToDoModal() {
+    saveMode = 1;
     newTaskModal.showModal();
 }
 
@@ -25,35 +29,48 @@ const dateInput = document.getElementById("todoDate");
 const descriptionInput = document.querySelector('textarea[name="todo-note"]');
 
 let title = "";
-let deuDate = "";
+let dueDate = "";
 let priority = 4;
 let description = "";
 
 
 function getInputs() {
     title = titleInput.value;
-    deuDate = formatDate(dateInput.value);
+    dueDate = formatDate(dateInput.value);
     priority =  Number(document.querySelector('input[name="priority"]:checked').value);
     description = descriptionInput.value;
 }
 
 function saveTask() {
     getInputs();
-    const newTask = new Task(title, description, deuDate, priority);
+    if(saveMode === 2) {
+        updateTask();
+    }
+    else {
+    const newTask = new Task(title, description, dueDate, priority);
     // Add the task to the selected folder instance
     addToTaskArray(newTask);
+    }
     loadTasks();
     newTaskModal.close();
     resetInputs();
 }
 
 export function showInfo(event) {
-    const task = getEventTask(event);
+    saveMode = 2;
+    targetTask = getEventTask(event);
     newTaskModal.showModal();
-    titleInput.value = task.title;
-    dateInput.value  = task.dueDate;
-    selectPriority(task.priority);
-    descriptionInput.value = task.description;
+    titleInput.value = targetTask.title;
+    dateInput.value  = targetTask.dueDate;
+    selectPriority(targetTask.priority);
+    descriptionInput.value = targetTask.description;
+}
+
+function updateTask() {
+    targetTask.title = title;
+    targetTask.description = description;
+    targetTask.dueDate = dueDate;
+    targetTask.priority = priority;
 }
 
 function selectPriority(pr) {
