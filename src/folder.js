@@ -1,5 +1,6 @@
 import { getSelectedFolderID } from "./domScripts/folderDom";
-import { loadTasks, loadAllTasks } from "./domScripts/taskDom";
+import { loadTasks } from "./domScripts/taskDom";
+import { toggleComplete } from "./task";
 
 export let foldersArray = [];
 
@@ -10,16 +11,9 @@ export function newFolder(name, tasks = [], id = 0) {
         tasks: tasks,
         id: id,
 
-        addTask(task) {
-            this.tasks.push(task);
-        },
+        addTask: addTask,
 
-        removeTask(taskId) {
-            this.tasks = this.tasks.filter(ts => ts.id !== taskId);
-            this.tasks.forEach((ts, index) =>  {
-                ts.id = index;
-            });
-        }
+        removeTask: removeTask,
     };
 } 
 
@@ -68,3 +62,42 @@ export function getTask(taskId, folderId) {
 }
 
 
+export function saveLocal() {
+    console.log(foldersArray);
+    const data = JSON.stringify(foldersArray);
+    console.log(data);
+    localStorage.setItem("foldersArray", data);
+}
+
+export function loadLocal() {
+    if(localStorage.getItem("foldersArray")) {
+        const receivedData = JSON.parse(localStorage.getItem("foldersArray"));
+        addFunctions(receivedData);
+        foldersArray = receivedData;
+        loadTasks();
+    }
+    else {
+        console.log("Folders are NOT available !");
+    }
+}
+
+export function addFunctions(data) {
+    data.forEach(folder => {
+        folder.addTask = addTask;
+        folder.removeTask = removeTask;
+        folder.tasks.forEach(task => {
+            task.toggleComplete = toggleComplete;
+        });
+    });
+}
+
+function addTask(task) {
+    this.tasks.push(task);
+}
+
+function removeTask(taskId) {
+    this.tasks = this.tasks.filter(ts => ts.id !== taskId);
+    this.tasks.forEach((ts, index) =>  {
+        ts.id = index;
+    });
+}

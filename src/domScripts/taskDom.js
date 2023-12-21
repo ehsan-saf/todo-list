@@ -1,5 +1,5 @@
 import { getSelectedFolderID } from "./folderDom";
-import { foldersArray, getFolderInstance, getTask, removeFromTasks } from "../folder";
+import { foldersArray, getFolderInstance, getTask, removeFromTasks, saveLocal } from "../folder";
 import { changePriority } from "../task"
 import { showInfo } from "./modifyTask";
 import { format, isToday, parseISO } from "date-fns";
@@ -17,6 +17,7 @@ const todoList = document.querySelector(".todo-list");
 
 
 export function loadTasks() {
+    saveLocal();
     todoList.innerHTML = "";
     const selectFolder = getSelectedFolderID();
     if(selectFolder === "all") { 

@@ -69,7 +69,6 @@ function loadFolders() {
 }
 
 function selectFolder(e) {
-    console.log("Folder clicked!");
     const selectedFolder = document.querySelector(".selectedFolder");
     if(selectedFolder) {
         selectedFolder.classList.remove("selectedFolder");

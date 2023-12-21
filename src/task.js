@@ -13,12 +13,11 @@ export class Task {
             this.id = id;
             this.folderId = folderId;
         }
-
-    toggleComplete() {
-        this.isComplete = !this.isComplete;
-    }  
-
 }
+
+export function toggleComplete() {
+    this.isComplete = !this.isComplete;
+} 
 
 export function changePriority(event) {
     const task = getEventTask(event);
