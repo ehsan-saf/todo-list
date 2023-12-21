@@ -28,7 +28,10 @@ export function initialize() {
     });
 
     folders.forEach(fl => { fl.addEventListener("click", selectFolder); });
-    addToFolderArray("Default");
+    if(!foldersArray.some(fl => fl.name === "Default")) {
+        addToFolderArray("Default")
+    };
+    loadFolders();
 }
 
 

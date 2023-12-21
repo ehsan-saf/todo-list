@@ -1,7 +1,6 @@
-import {initialize , addTasksToPage} from "./domScripts/dom";
-import { Task } from "./task";
-import { addToTaskArray, loadLocal } from "./folder";
-import { loadTasks } from "./domScripts/taskDom";
+import {initialize } from "./domScripts/dom";
+import { loadLocal } from "./folder";
+
 
 loadLocal();
 initialize();
