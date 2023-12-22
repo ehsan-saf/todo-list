@@ -1,5 +1,4 @@
-import { foldersArray, getFolderInstance } from "../folder";
-import { addToFolderArray } from "../folder";
+import { foldersArray, getFolderInstance , addToFolderArray, removeFolder } from "../folder";
 import { loadAllTasks, loadTasks } from "./taskDom";
 
 
@@ -29,9 +28,16 @@ export function initialize() {
 
     folders.forEach(fl => { fl.addEventListener("click", selectFolder); });
     if(!foldersArray.some(fl => fl.name === "Default")) {
-        addToFolderArray("Default")
+        addToFolderArray("Default");
+        console.log(foldersArray);
     };
     loadFolders();
+    selectDefaultFolder();
+}
+
+
+function selectDefaultFolder() {
+    document.querySelector(".folder-list .folder").classList.add("selectedFolder");
 }
 
 
@@ -48,7 +54,7 @@ function resetFolderInput() {
     newFolderName.value = "";
 }
 
-function loadFolders() {
+export function loadFolders() {
     foldersList.innerHTML = "";
     foldersArray.forEach(fl => {
 
@@ -56,14 +62,29 @@ function loadFolders() {
         folder.classList.add("folder");
         folder.addEventListener("click", selectFolder);
 
+        const div = document.createElement("div");
+
         const icon = document.createElement("img");
         icon.src = "./icons/list.png";
 
         const name = document.createElement("p");
         name.textContent = fl.name;
 
-        folder.appendChild(icon);
-        folder.appendChild(name);
+        const removeButton = document.createElement("button");
+        removeButton.classList.add(".removeFolder");
+        removeButton.addEventListener("click", removeFolder);
+
+        const removeIcon = document.createElement("img");
+        removeIcon.src = "./icons/remove.png";
+
+        removeButton.appendChild(removeIcon);
+
+        div.appendChild(icon);
+        div.appendChild(name);
+
+        folder.appendChild(div);
+        folder.appendChild(removeButton);
+
         folder.id = fl.id;
 
         foldersList.appendChild(folder); 
@@ -105,3 +126,4 @@ function selectAddedFolder() {
     setFolderName();
     loadTasks();
 }
+

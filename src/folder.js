@@ -1,4 +1,4 @@
-import { getSelectedFolderID } from "./domScripts/folderDom";
+import { getSelectedFolderID, loadFolders } from "./domScripts/folderDom";
 import { loadTasks } from "./domScripts/taskDom";
 import { toggleComplete } from "./task";
 
@@ -63,9 +63,7 @@ export function getTask(taskId, folderId) {
 
 
 export function saveLocal() {
-    console.log(foldersArray);
     const data = JSON.stringify(foldersArray);
-    console.log(data);
     localStorage.setItem("foldersArray", data);
 }
 
@@ -74,10 +72,6 @@ export function loadLocal() {
         const receivedData = JSON.parse(localStorage.getItem("foldersArray"));
         addFunctions(receivedData);
         foldersArray = receivedData;
-        loadTasks();
-    }
-    else {
-        console.log("Folders are NOT available !");
     }
 }
 
@@ -100,4 +94,15 @@ function removeTask(taskId) {
     this.tasks.forEach((ts, index) =>  {
         ts.id = index;
     });
+}
+
+export function removeFolder(event) {
+    event.stopPropagation();
+    const folderId = Number(event.target.closest(".folder").id);
+    foldersArray = foldersArray.filter(folder => folder.id !== folderId);
+    foldersArray.forEach((folder, index) => {
+        folder.id = index;
+    });
+    saveLocal();
+    loadFolders();
 }
