@@ -85,6 +85,10 @@ button>img {
     gap: 10px;
 }
 
+.folder * {
+    user-select: none;
+}
+
 .folder-list .folder {
     justify-content: space-between;
 }

@@ -100,9 +100,13 @@ export function removeFolder(event) {
     event.stopPropagation();
     const folderId = Number(event.target.closest(".folder").id);
     foldersArray = foldersArray.filter(folder => folder.id !== folderId);
+    updateFolderArray();
+    saveLocal();
+    loadFolders();
+}
+
+export function updateFolderArray() {
     foldersArray.forEach((folder, index) => {
         folder.id = index;
     });
-    saveLocal();
-    loadFolders();
 }

@@ -1,4 +1,4 @@
-import { foldersArray, getFolderInstance , addToFolderArray, removeFolder } from "../folder";
+import { foldersArray, getFolderInstance , addToFolderArray, removeFolder, updateFolderArray } from "../folder";
 import { loadAllTasks, loadTasks } from "./taskDom";
 
 
@@ -29,7 +29,6 @@ export function initialize() {
     folders.forEach(fl => { fl.addEventListener("click", selectFolder); });
     if(!foldersArray.some(fl => fl.name === "Default")) {
         addToFolderArray("Default");
-        console.log(foldersArray);
     };
     loadFolders();
     selectDefaultFolder();
@@ -83,7 +82,10 @@ export function loadFolders() {
         div.appendChild(name);
 
         folder.appendChild(div);
+
+        if(fl.id !== 0) {
         folder.appendChild(removeButton);
+        }
 
         folder.id = fl.id;
 
