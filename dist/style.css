@@ -57,7 +57,7 @@ button>img {
 
     padding: 3px 5px 3px 5px;
 
-    border: 1px solid red;
+    border: 1px solid gray;
     border-radius: 10px;
 
     cursor: pointer;
@@ -65,7 +65,8 @@ button>img {
 }
 
 .selectedFolder {
-    background-color: rgb(79, 210, 243);
+    color: white;
+    background-color: rgb(100, 100, 100);
 
     font-weight: bold;
 }
@@ -167,7 +168,8 @@ button>img {
 
 
 .content>* {
-    border: 2px solid red;
+    border: 1px solid gray;
+    padding: 15px;
 }
 
 /* ------ Main Section ------- */

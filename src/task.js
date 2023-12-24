@@ -12,6 +12,7 @@ export class Task {
             this.isComplete = false;
             this.id = id;
             this.folderId = folderId;
+            this.toggleComplete = toggleComplete;
         }
 }
 
